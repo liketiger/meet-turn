@@ -32,6 +32,13 @@ export function HomeScreen() {
       </View>
 
       <View className="flex-row flex-wrap justify-center gap-2">
+        {__DEV__ ? (
+          <Link href="./design-system" asChild>
+            <Button variant="tonal">
+              <Text>디자인 시스템</Text>
+            </Button>
+          </Link>
+        ) : null}
         <Link href="https://reactnativereusables.com" asChild>
           <Button>
             <Text>Browse the Docs</Text>

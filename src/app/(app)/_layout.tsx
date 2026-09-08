@@ -11,6 +11,7 @@ export default function AppLayout() {
           headerRight: () => <ThemeToggle />,
         }}
       />
+      <Stack.Screen name="design-system" options={{ headerShown: false }} />
     </Stack>
   );
 }

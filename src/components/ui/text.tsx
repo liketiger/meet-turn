@@ -6,7 +6,7 @@ import { Platform, Text as RNText, type Role } from 'react-native';
 
 const textVariants = cva(
   cn(
-    'text-foreground text-base',
+    'text-foreground font-pretendard-regular text-base leading-[23px] tracking-[-0.192px]',
     Platform.select({
       web: 'select-text',
     })
@@ -15,25 +15,40 @@ const textVariants = cva(
     variants: {
       variant: {
         default: '',
+        display: 'font-pretendard-bold text-2xl leading-[33px] font-bold tracking-[-1.2px]',
+        title: 'font-pretendard-bold text-[22px] leading-[31px] font-bold tracking-[-1.2px]',
+        headline:
+          'font-pretendard-semibold text-lg leading-[26px] font-semibold tracking-[-0.216px]',
+        body: 'text-[17px] leading-[25.5px] tracking-[-0.204px]',
+        label:
+          'font-pretendard-semibold text-[15px] leading-[22px] font-semibold tracking-[-0.18px]',
+        caption:
+          'font-pretendard-medium text-[13px] leading-[19.5px] font-medium tracking-[-0.156px]',
         h1: cn(
-          'text-center text-4xl font-extrabold tracking-tight',
+          'font-pretendard-bold text-center text-2xl leading-[33px] font-bold tracking-[-1.2px]',
           Platform.select({ web: 'scroll-m-20 text-balance' })
         ),
         h2: cn(
-          'border-border border-b pb-2 text-3xl font-semibold tracking-tight',
+          'font-pretendard-bold border-border border-b pb-2 text-[22px] leading-[31px] font-bold tracking-[-1.2px]',
           Platform.select({ web: 'scroll-m-20 first:mt-0' })
         ),
-        h3: cn('text-2xl font-semibold tracking-tight', Platform.select({ web: 'scroll-m-20' })),
-        h4: cn('text-xl font-semibold tracking-tight', Platform.select({ web: 'scroll-m-20' })),
-        p: 'mt-3 leading-7 sm:mt-6',
+        h3: cn(
+          'font-pretendard-bold text-xl leading-7 font-bold tracking-[-0.24px]',
+          Platform.select({ web: 'scroll-m-20' })
+        ),
+        h4: cn(
+          'font-pretendard-semibold text-lg leading-[26px] font-semibold tracking-[-0.216px]',
+          Platform.select({ web: 'scroll-m-20' })
+        ),
+        p: 'mt-3 leading-[23px] sm:mt-6',
         blockquote: 'mt-4 border-l-2 pl-3 italic sm:mt-6 sm:pl-6',
         code: cn(
           'bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold'
         ),
-        lead: 'text-muted-foreground text-xl',
-        large: 'text-lg font-semibold',
-        small: 'text-sm font-medium leading-none',
-        muted: 'text-muted-foreground text-sm',
+        lead: 'text-muted-foreground text-lg leading-[26px] tracking-[-0.216px]',
+        large: 'font-pretendard-semibold text-lg leading-[26px] font-semibold tracking-[-0.216px]',
+        small: 'font-pretendard-medium text-sm leading-5 font-medium tracking-[-0.168px]',
+        muted: 'text-muted-foreground text-sm leading-5 tracking-[-0.168px]',
       },
     },
     defaultVariants: {
@@ -47,6 +62,9 @@ type TextVariantProps = VariantProps<typeof textVariants>;
 type TextVariant = NonNullable<TextVariantProps['variant']>;
 
 const ROLE: Partial<Record<TextVariant, Role>> = {
+  display: 'heading',
+  headline: 'heading',
+  title: 'heading',
   h1: 'heading',
   h2: 'heading',
   h3: 'heading',
@@ -56,6 +74,9 @@ const ROLE: Partial<Record<TextVariant, Role>> = {
 };
 
 const ARIA_LEVEL: Partial<Record<TextVariant, string>> = {
+  display: '1',
+  headline: '3',
+  title: '2',
   h1: '1',
   h2: '2',
   h3: '3',
